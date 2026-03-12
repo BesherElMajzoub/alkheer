@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تسجيل الدخول - طريق الخير</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,12 +16,12 @@
         }
 
         body {
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Cairo', sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #0a1f12 0%, #0d3520 40%, #0d7c3d 100%);
+            background: linear-gradient(160deg, #0a1628 0%, #0F3D75 40%, #1a5fa8 100%);
             padding: 24px;
             position: relative;
             overflow: hidden;
@@ -32,7 +34,7 @@
             left: -200px;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(201, 162, 39, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(54, 194, 255, 0.08) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -43,49 +45,51 @@
             right: -150px;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(13, 124, 61, 0.2) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(24, 144, 255, 0.12) 0%, transparent 70%);
             pointer-events: none;
         }
 
         .login-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 48px;
+            border-radius: 20px;
+            padding: 52px 44px;
             width: 100%;
-            max-width: 420px;
-            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+            max-width: 430px;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
             z-index: 1;
         }
 
         .login-icon {
-            width: 72px;
-            height: 72px;
-            background: linear-gradient(135deg, #0d7c3d, #1a9e50);
-            border-radius: 20px;
+            width: 64px;
+            height: 64px;
+            background: #EAF4FF;
+            color: #1890FF;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
+            font-size: 28px;
             margin: 0 auto 24px;
-            box-shadow: 0 8px 24px rgba(13, 124, 61, 0.3);
+            border: 1px solid rgba(24, 144, 255, 0.12);
         }
 
         .login-card h1 {
             text-align: center;
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 800;
-            color: #065f2d;
+            color: #0F3D75;
             margin-bottom: 8px;
         }
 
         .login-card p {
             text-align: center;
-            color: #5a6e5f;
+            color: #6B7A90;
             font-size: 15px;
-            margin-bottom: 32px;
+            margin-bottom: 36px;
+            line-height: 1.6;
         }
 
         .form-group {
@@ -95,75 +99,90 @@
         .form-group label {
             display: block;
             font-size: 14px;
-            font-weight: 600;
-            color: #1a2e1f;
+            font-weight: 700;
+            color: #15314B;
             margin-bottom: 10px;
         }
 
         .form-group input {
             width: 100%;
             padding: 16px 18px;
-            border: 2px solid #d4e4d9;
-            border-radius: 14px;
-            font-family: 'Tajawal', sans-serif;
-            font-size: 16px;
-            color: #1a2e1f;
-            background: #f8faf9;
-            transition: all 0.3s ease;
+            border: 1.5px solid #E6EDF5;
+            border-radius: 12px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 15px;
+            color: #15314B;
+            background: #fff;
+            transition: all 0.2s ease;
             direction: rtl;
         }
 
         .form-group input:focus {
             outline: none;
-            border-color: #0d7c3d;
-            box-shadow: 0 0 0 4px rgba(13, 124, 61, 0.1);
-            background: white;
+            border-color: #1890FF;
+            box-shadow: 0 0 0 4px rgba(24, 144, 255, 0.12);
+        }
+
+        .form-group input::placeholder {
+            color: #A0AEC0;
         }
 
         .btn-login {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, #0d7c3d, #1a9e50);
+            background: #1890FF;
             color: white;
             border: none;
-            border-radius: 14px;
-            font-family: 'Tajawal', sans-serif;
-            font-size: 17px;
+            border-radius: 12px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 16px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(13, 124, 61, 0.3);
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(24, 144, 255, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .btn-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(13, 124, 61, 0.4);
+            background: #0c7ee6;
+            box-shadow: 0 6px 20px rgba(24, 144, 255, 0.35);
         }
 
         .alert-error {
-            background: rgba(239, 68, 68, 0.1);
-            color: #dc2626;
+            background: #FEF2F2;
+            color: #991B1B;
             padding: 14px 18px;
             border-radius: 12px;
             margin-bottom: 24px;
             font-size: 14px;
-            font-weight: 500;
-            border: 1px solid rgba(239, 68, 68, 0.2);
+            font-weight: 600;
+            border: 1px solid #FECACA;
             text-align: center;
         }
 
         .back-link {
             display: block;
             text-align: center;
-            margin-top: 24px;
-            color: #5a6e5f;
+            margin-top: 28px;
+            color: #6B7A90;
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.3s ease;
+            font-weight: 600;
+            transition: color 0.2s ease;
         }
 
         .back-link:hover {
-            color: #0d7c3d;
+            color: #1890FF;
+        }
+
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 40px 28px;
+            }
         }
     </style>
 </head>

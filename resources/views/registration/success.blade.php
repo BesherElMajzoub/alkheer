@@ -9,14 +9,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 60px 0;
+            padding: 80px 0;
         }
 
         .success-card {
             background: var(--bg-card);
             border-radius: var(--radius);
-            padding: 60px 48px;
-            box-shadow: var(--shadow-lg);
+            padding: 64px 48px;
+            box-shadow: var(--shadow-md);
             border: 1px solid var(--border);
             text-align: center;
             max-width: 520px;
@@ -31,21 +31,22 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--gold), var(--primary));
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
         }
 
         .success-icon {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.2));
+            width: 88px;
+            height: 88px;
+            background: var(--success-soft);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 44px;
-            margin: 0 auto 24px;
+            font-size: 42px;
+            margin: 0 auto 28px;
             animation: scaleIn 0.5s ease;
+            border: 2px solid rgba(34, 197, 94, 0.15);
         }
 
         @keyframes scaleIn {
@@ -59,7 +60,7 @@
         }
 
         .success-card h1 {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 800;
             color: var(--primary-dark);
             margin-bottom: 12px;
@@ -67,25 +68,26 @@
 
         .success-card p {
             font-size: 17px;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             margin-bottom: 8px;
             line-height: 1.8;
         }
 
         .success-event-name {
             display: inline-block;
-            background: rgba(13, 124, 61, 0.08);
-            padding: 8px 20px;
+            background: var(--primary-soft);
+            padding: 10px 24px;
             border-radius: 99px;
             color: var(--primary);
             font-weight: 700;
             font-size: 16px;
-            margin: 16px 0 32px;
+            margin: 20px 0 36px;
+            border: 1px solid rgba(24, 144, 255, 0.15);
         }
 
         .success-actions {
             display: flex;
-            gap: 12px;
+            gap: 14px;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -95,7 +97,7 @@
 @section('content')
     <section class="success-page">
         <div class="container">
-            <div class="success-card">
+            <div class="success-card animate-in">
                 <div class="success-icon">✅</div>
                 <h1>تم التسجيل بنجاح!</h1>
                 <p>بارك الله فيك، تم تسجيل حضورك</p>

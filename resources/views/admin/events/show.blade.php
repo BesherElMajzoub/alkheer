@@ -13,9 +13,10 @@
 
         .summary-item {
             background: var(--bg);
-            border-radius: var(--radius-sm);
-            padding: 16px 20px;
+            border-radius: var(--radius-xs);
+            padding: 20px 24px;
             text-align: center;
+            border: 1px solid var(--border);
         }
 
         .summary-item .number {
@@ -23,17 +24,18 @@
             font-weight: 900;
             color: var(--primary-dark);
             line-height: 1;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .summary-item .label {
             font-size: 13px;
-            color: var(--text-muted);
+            color: var(--text-secondary);
+            font-weight: 600;
         }
 
         .transport-section {
-            background: linear-gradient(135deg, rgba(18, 140, 126, 0.05), rgba(37, 211, 102, 0.05));
-            border: 1px solid rgba(37, 211, 102, 0.15);
+            background: linear-gradient(135deg, rgba(24, 144, 255, 0.03), rgba(54, 194, 255, 0.03));
+            border: 1px solid rgba(24, 144, 255, 0.12);
             border-radius: var(--radius);
             padding: 28px;
             margin-bottom: 24px;
@@ -42,7 +44,7 @@
         .transport-title {
             font-size: 18px;
             font-weight: 700;
-            color: #128C7E;
+            color: var(--primary);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
@@ -51,15 +53,17 @@
 
         .driver-card {
             background: white;
-            border-radius: var(--radius-sm);
-            padding: 20px;
-            margin-bottom: 16px;
+            border-radius: var(--radius-xs);
+            padding: 24px;
+            margin-bottom: 20px;
             border: 1px solid var(--border);
             transition: var(--transition);
+            box-shadow: var(--shadow-xs);
         }
 
         .driver-card:hover {
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-sm);
+            border-color: rgba(24, 144, 255, 0.15);
         }
 
         .driver-header {
@@ -80,13 +84,13 @@
         .driver-avatar {
             width: 44px;
             height: 44px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            border-radius: 12px;
+            background: var(--primary-soft);
+            border-radius: var(--radius-xs);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 20px;
-            color: white;
+            color: var(--primary);
         }
 
         .driver-name {
@@ -96,7 +100,7 @@
 
         .driver-meta {
             font-size: 13px;
-            color: var(--text-muted);
+            color: var(--text-secondary);
         }
 
         .driver-passengers {
@@ -111,7 +115,7 @@
             justify-content: space-between;
             padding: 8px 12px;
             background: var(--bg);
-            border-radius: 8px;
+            border-radius: var(--radius-xs);
             margin-bottom: 6px;
             font-size: 14px;
         }
@@ -133,19 +137,20 @@
         .assign-form select {
             flex: 1;
             min-width: 180px;
-            padding: 8px 12px;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            font-family: 'Tajawal', sans-serif;
+            padding: 10px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-xs);
+            font-family: 'Cairo', sans-serif;
             font-size: 14px;
             color: var(--text);
-            background: var(--bg);
+            background: #fff;
             direction: rtl;
         }
 
         .assign-form select:focus {
             outline: none;
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(24, 144, 255, 0.1);
         }
 
         .reg-table-actions {
@@ -170,6 +175,7 @@
             </p>
         </div>
         <div class="btn-group">
+            <a href="{{ route('admin.events.rides', $event) }}" class="btn btn-primary btn-sm">🚗 تنظيم التوصيل</a>
             <a href="/admin/events/{{ $event->id }}/edit" class="btn btn-outline btn-sm">✏️ تعديل</a>
             <a href="/admin/events" class="btn btn-outline btn-sm">→ العودة</a>
         </div>
@@ -201,12 +207,12 @@
         </div>
 
         @if ($event->description)
-            <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 12px;">{{ $event->description }}</p>
+            <p style="color: var(--text-secondary); font-size: 15px; margin-bottom: 12px;">{{ $event->description }}</p>
         @endif
 
         @if ($event->notes)
             <div
-                style="background: rgba(201,162,39,0.08); padding: 14px 18px; border-radius: 10px; border-right: 3px solid var(--gold); font-size: 14px; color: var(--text-muted);">
+                style="background: var(--primary-soft); padding: 16px 20px; border-radius: var(--radius-xs); border-right: 3px solid var(--primary); font-size: 14px; color: var(--text-secondary);">
                 📝 {{ $event->notes }}
             </div>
         @endif
@@ -239,13 +245,15 @@
 
                     @if ($driver->passengers->isNotEmpty())
                         <div class="driver-passengers">
-                            <div style="font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px;">👥
+                            <div
+                                style="font-size: 13px; font-weight: 700; color: var(--text-secondary); margin-bottom: 8px;">
+                                👥
                                 الركاب المعيّنون:</div>
                             @foreach ($driver->passengers as $passenger)
                                 <div class="passenger-item">
                                     <div>
                                         <span class="name">{{ $passenger->name }}</span>
-                                        <span style="color: var(--text-muted);"> — {{ $passenger->area }}</span>
+                                        <span style="color: var(--text-secondary);"> — {{ $passenger->area }}</span>
                                     </div>
                                     <form action="{{ route('admin.events.unassign-driver', $event) }}" method="POST"
                                         style="display: inline;">
@@ -345,7 +353,7 @@
                                     —
                                 @endif
                             </td>
-                            <td style="font-size: 13px; color: var(--text-muted);">
+                            <td style="font-size: 13px; color: var(--text-secondary);">
                                 {{ $reg->created_at->format('m/d H:i') }}</td>
                             <td>
                                 <div class="reg-table-actions">

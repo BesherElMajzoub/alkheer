@@ -23,10 +23,19 @@ class Event extends Model
         'max_attendees' => 'integer',
     ];
 
+    // ── Relationships ──
+
     public function registrations(): HasMany
     {
         return $this->hasMany(Registration::class);
     }
+
+    public function rides(): HasMany
+    {
+        return $this->hasMany(Ride::class);
+    }
+
+    // ── Scopes ──
 
     public function scopeUpcoming($query)
     {
@@ -40,6 +49,8 @@ class Event extends Model
         return $query->where('is_active', true);
     }
 
+    // ── Accessors ──
+
     public function getRegistrationsCountAttribute(): int
     {
         return $this->registrations()->count();
@@ -50,9 +61,19 @@ class Event extends Model
         return $this->registrations()->where('has_car', true)->count();
     }
 
+    public function getEligibleDriversCountAttribute(): int
+    {
+        return $this->registrations()->eligibleDrivers()->count();
+    }
+
     public function getNeedsRideCountAttribute(): int
     {
-        return $this->registrations()->where('has_car', false)->count();
+        return $this->registrations()->needsRide()->count();
+    }
+
+    public function getUnassignedCountAttribute(): int
+    {
+        return $this->registrations()->unassigned()->count();
     }
 
     public function isFull(): bool

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\TransportAxis;
 
 class EventController extends Controller
 {
@@ -17,6 +18,11 @@ class EventController extends Controller
     {
         $event->loadCount('registrations');
 
-        return view('events.show', compact('event'));
+        $axes = TransportAxis::active()
+            ->with(['areas' => fn ($q) => $q->active()->orderBy('sort_order')])
+            ->orderBy('sort_order')
+            ->get();
+
+        return view('events.show', compact('event', 'axes'));
     }
 }
